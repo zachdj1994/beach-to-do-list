@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 export function ToDoListComponent({ toDoItems }: {toDoItems: string[]}) {
     return(
-        <ul>
-            {toDoItems.map((toDoItem) => (<li>{toDoItem}</li>))}
+        <ul className={'To-do-list'}>
+            {toDoItems.map((toDoItem) => (<li className={'To-do-list-item'}>{toDoItem}</li>))}
         </ul>
     );
 }

@@ -13,8 +13,8 @@ function App() {
     ];
   return (
     <div className="App">
-      <PageHeaderComponent />
-      <ToDoListComponent toDoItems={toDoItems} />
+        <PageHeaderComponent />
+        <div className={'Page-body'} ><ToDoListComponent toDoItems={toDoItems} /></div>
     </div>
   );
 }
