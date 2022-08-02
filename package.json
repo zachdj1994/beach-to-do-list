@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/zachdj1994/beach-to-do-list/issues"
   },
-  "homepage": "https://github.com/zachdj1994/beach-to-do-list#readme"
+  "homepage": "https://github.com/zachdj1994/beach-to-do-list#readme",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
 }
