@@ -1,2 +1,2 @@
 # beach-to-do-list
-A to do list app while I'm beached
+A to do list app for beached striders
