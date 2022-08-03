@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import {ToDoListComponent} from './ToDoListComponent';
+import ToDoListComponent from './ToDoListComponent';
 
 describe('The to do list component', () => {
     it('displays a list of to-do items', () => {
