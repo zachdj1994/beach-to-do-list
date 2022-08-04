@@ -12,7 +12,7 @@ describe('The to do list page', () => {
     it('gets the to do items and passes them to the component', async () => {
         const expected = [
             'Vibe',
-            'Listen to Beach Boys or something?',
+            'Listen to the Pina Colada song or something?',
             "SUNSCREEN DON'T FORGET AGAIN",
             'Get a closer look at that weird smelly thing that just washed up',
             'Aloe vera (I forgot sunscreen again)',

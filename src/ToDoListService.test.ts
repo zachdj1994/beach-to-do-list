@@ -11,7 +11,7 @@ describe('The to do list service', () => {
             data: {
                 toDoList: [
                     'Vibe',
-                    'Listen to Beach Boys or something?',
+                    'Listen to the Pina Colada song or something?',
                     "SUNSCREEN DON'T FORGET AGAIN",
                     'Get a closer look at that weird smelly thing that just washed up',
                     'Aloe vera (I forgot sunscreen again)',
@@ -21,7 +21,7 @@ describe('The to do list service', () => {
         });
         const expected = {toDoList: [
                 'Vibe',
-                'Listen to Beach Boys or something?',
+                'Listen to the Pina Colada song or something?',
                 "SUNSCREEN DON'T FORGET AGAIN",
                 'Get a closer look at that weird smelly thing that just washed up',
                 'Aloe vera (I forgot sunscreen again)',
@@ -30,7 +30,7 @@ describe('The to do list service', () => {
 
         const actual = await getToDoListItems();
 
-        expect(axios.get).toHaveBeenCalledWith('/toDoListItems');
+        expect(axios.get).toHaveBeenCalledWith('/toDoListItems', {baseURL: 'http://localhost:8080'});
         expect(actual).toEqual(expected);
     });
 });
