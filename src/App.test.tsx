@@ -18,7 +18,7 @@ describe('The to do list page', () => {
             'Aloe vera (I forgot sunscreen again)',
         ];
 
-        mockGetToDoListItems.mockResolvedValue({toDoItems: expected});
+        mockGetToDoListItems.mockResolvedValue(expected);
 
         await act(async() => {render(<App />);})
 

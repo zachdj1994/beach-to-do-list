@@ -8,7 +8,7 @@ function App() {
     const [toDoListItems, setToDoListItems] = useState([''])
     useEffect(() => {
         getToDoListItems().then((result) => {
-            setToDoListItems(result.toDoItems);
+            setToDoListItems(result);
         });
     }, []);
 
