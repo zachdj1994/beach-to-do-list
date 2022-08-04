@@ -1,0 +1,3 @@
+type GetToDoListResponse = {
+    toDoItems: string[]
+}

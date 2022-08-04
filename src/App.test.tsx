@@ -1,5 +1,5 @@
 import React from 'react';
-import {act, getByText, render, screen, waitFor} from '@testing-library/react';
+import {act, render} from '@testing-library/react';
 import App from './App';
 import ToDoListComponent from './ToDoListComponent';
 import * as ToDoListService from './ToDoListService';
@@ -10,18 +10,19 @@ const mockGetToDoListItems = jest.spyOn(ToDoListService, 'getToDoListItems');
 
 describe('The to do list page', () => {
     it('gets the to do items and passes them to the component', async () => {
-        const toDoItems = [
+        const expected = [
             'Vibe',
             'Listen to Beach Boys or something?',
             "SUNSCREEN DON'T FORGET AGAIN",
             'Get a closer look at that weird smelly thing that just washed up',
             'Aloe vera (I forgot sunscreen again)',
         ];
-        mockGetToDoListItems.mockResolvedValue(toDoItems);
+
+        mockGetToDoListItems.mockResolvedValue({toDoItems: expected});
 
         await act(async() => {render(<App />);})
 
         expect(mockGetToDoListItems).toHaveBeenCalledTimes(1);
-        expect(ToDoListComponent).toHaveBeenCalledWith({toDoItems}, {});
+        expect(ToDoListComponent).toHaveBeenCalledWith({toDoItems: expected}, {});
     });
-})
+});
