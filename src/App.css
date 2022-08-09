@@ -1,14 +1,41 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  min-height: 100vh;
   text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  background-color: #5c97f7;
   font-size: calc(10px + 2vmin);
-  color: white;
+}
+
+.Page-body {
+  align-items: center;
+  width: 100%;
+  background-color: #f7955c;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 18;
+}
+
+.To-do-list {
+  flex-grow: 1;
+  margin: 0;
+  width: 40%;
+  background-color: white;
+  display: inline-block;
+  text-align: left;
+}
+
+.To-do-list-item {
+  margin: 10px;
+  list-style-type: none;
 }
