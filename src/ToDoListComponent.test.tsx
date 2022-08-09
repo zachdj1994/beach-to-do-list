@@ -8,7 +8,7 @@ describe('The to do list component', () => {
             'Vibe',
             'Listen to the Pina Colada song or something?',
             "SUNSCREEN DON'T FORGET AGAIN",
-            'Get a closer look at that weird smelly thing that just washed up',
+            'ooh, dolphins!!!',
             'Aloe vera (I forgot sunscreen again)',
         ];
 
@@ -17,7 +17,7 @@ describe('The to do list component', () => {
         screen.getByText('Vibe');
         screen.getByText('Listen to the Pina Colada song or something?');
         screen.getByText("SUNSCREEN DON'T FORGET AGAIN");
-        screen.getByText('Get a closer look at that weird smelly thing that just washed up');
+        screen.getByText('ooh, dolphins!!!');
         screen.getByText('Aloe vera (I forgot sunscreen again)');
     });
 })

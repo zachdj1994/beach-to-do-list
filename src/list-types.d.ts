@@ -1,3 +1,1 @@
-type GetToDoListResponse = {
-    toDoItems: string[]
-}
+type GetToDoListResponse = string[];

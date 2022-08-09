@@ -12,7 +12,7 @@ describe('The to do list service', () => {
                 'Vibe',
                 'Listen to the Pina Colada song or something?',
                 "SUNSCREEN DON'T FORGET AGAIN",
-                'Get a closer look at that weird smelly thing that just washed up',
+                'ooh, dolphins!!!',
                 'Aloe vera (I forgot sunscreen again)',
             ]
         });
@@ -20,7 +20,7 @@ describe('The to do list service', () => {
                 'Vibe',
                 'Listen to the Pina Colada song or something?',
                 "SUNSCREEN DON'T FORGET AGAIN",
-                'Get a closer look at that weird smelly thing that just washed up',
+                'ooh, dolphins!!!',
                 'Aloe vera (I forgot sunscreen again)',
             ];
         jest.spyOn(axios, 'get').mockResolvedValue(axiosReturnValue)
