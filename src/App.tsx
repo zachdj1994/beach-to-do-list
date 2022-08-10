@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
-import PageHeaderComponent from './PageHeaderComponent';
-import ToDoListComponent from './ToDoListComponent';
-import {getToDoListItems} from './ToDoListService';
+import PageHeaderComponent from './header/PageHeaderComponent';
+import ToDoListComponent from './to-do-list/ToDoListComponent';
+import {getToDoListItems} from './to-do-list/ToDoListService';
 
 function App() {
     const [toDoListItems, setToDoListItems] = useState([''])

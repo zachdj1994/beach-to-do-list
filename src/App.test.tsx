@@ -1,10 +1,10 @@
 import React from 'react';
 import {act, render} from '@testing-library/react';
 import App from './App';
-import ToDoListComponent from './ToDoListComponent';
-import * as ToDoListService from './ToDoListService';
+import ToDoListComponent from './to-do-list/ToDoListComponent';
+import * as ToDoListService from './to-do-list/ToDoListService';
 
-jest.mock('./ToDoListComponent', () => jest.fn());
+jest.mock('./to-do-list/ToDoListComponent', () => jest.fn());
 
 const mockGetToDoListItems = jest.spyOn(ToDoListService, 'getToDoListItems');
 
