@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import ToDoListComponent from './ToDoListComponent';
 
 describe('The to do list component', () => {
@@ -20,4 +20,22 @@ describe('The to do list component', () => {
         screen.getByText('ooh, dolphins!!!');
         screen.getByText('Aloe vera (I forgot sunscreen again)');
     });
-})
+
+    describe('the add item button', () => {
+        describe('when not clicked', () => {
+            it('hides the add item component', () => {
+                const { queryByTestId } = render(<ToDoListComponent toDoItems={[]}/>);
+
+                expect(queryByTestId('add-item-component')).toBeNull();
+            });
+        })
+        describe('on click', () => {
+            it('shows the add item component', () => {
+                render(<ToDoListComponent toDoItems={[]}/>);
+                fireEvent.click(screen.getByText('Add Item +'));
+
+                screen.getByTestId('add-item-component');
+            });
+        })
+    })
+});

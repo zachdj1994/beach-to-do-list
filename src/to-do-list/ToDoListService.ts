@@ -5,4 +5,8 @@ const getToDoListItems = async (): Promise<GetToDoListResponse> => {
     return data;
 }
 
-export {getToDoListItems}
+const addAnItem = (item: string): void => {
+    console.log('did the thing');
+}
+
+export {getToDoListItems, addAnItem};
