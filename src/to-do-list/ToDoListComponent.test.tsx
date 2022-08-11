@@ -1,10 +1,13 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {act, fireEvent, render, screen} from '@testing-library/react';
 import ToDoListComponent from './ToDoListComponent';
+import * as ToDoListService from './ToDoListService';
+
+const mockGetToDoListItems = jest.spyOn(ToDoListService, 'getToDoListItems');
 
 describe('The to do list component', () => {
-    it('displays a list of to-do items', () => {
-        const toDoItems = [
+    it('gets and displays the to do items', async () => {
+        const expected = [
             'Vibe',
             'Listen to the Pina Colada song or something?',
             "SUNSCREEN DON'T FORGET AGAIN",
@@ -12,12 +15,39 @@ describe('The to do list component', () => {
             'Aloe vera (I forgot sunscreen again)',
         ];
 
-        render(<ToDoListComponent toDoItems={toDoItems}/>)
+        mockGetToDoListItems.mockResolvedValue(expected);
 
+        await act(async() => {render(<ToDoListComponent />);})
+
+        expect(mockGetToDoListItems).toHaveBeenCalledTimes(1);
         screen.getByText('Vibe');
         screen.getByText('Listen to the Pina Colada song or something?');
         screen.getByText("SUNSCREEN DON'T FORGET AGAIN");
         screen.getByText('ooh, dolphins!!!');
         screen.getByText('Aloe vera (I forgot sunscreen again)');
     });
-})
+
+    describe('the add item button', () => {
+        describe('when not clicked', () => {
+            it('hides the add item component', async () => {
+                mockGetToDoListItems.mockResolvedValue(['']);
+
+                await act(async() =>{
+                    const { queryByTestId } = render(<ToDoListComponent toDoItems={[]}/>);
+                    expect(queryByTestId('add-item-component')).toBeNull();
+                });
+
+            });
+        })
+        describe('on click', () => {
+            it('shows the add item component',async () => {
+                mockGetToDoListItems.mockResolvedValue(['']);
+
+                await act(async() => {render(<ToDoListComponent toDoItems={[]}/>);})
+                fireEvent.click(screen.getByText('Add Item +'));
+
+                screen.getByTestId('add-item-component');
+            });
+        })
+    })
+});

@@ -1,8 +1,14 @@
 import axios from 'axios';
 
+const url = '/toDoListItems';
+
 const getToDoListItems = async (): Promise<GetToDoListResponse> => {
-    const { data } = await axios.get<GetToDoListResponse>('/toDoListItems', {baseURL: 'http://localhost:8080'})
+    const { data } = await axios.get<GetToDoListResponse>(url, {baseURL: 'http://localhost:8080'})
     return data;
 }
 
-export {getToDoListItems}
+const addAnItem = (item: string): void => {
+    axios.post(url, {item}, {baseURL: 'http://localhost:8080'});
+}
+
+export {getToDoListItems, addAnItem};
