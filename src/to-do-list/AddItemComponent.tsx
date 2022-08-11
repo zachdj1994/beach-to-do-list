@@ -1,13 +1,20 @@
 import {addAnItem} from './ToDoListService';
 import React, {useState} from 'react';
 
-function AddItemComponent() {
+type Props = {
+    toDoListItems: GetToDoListResponse
+    setToDoListItems: (result: GetToDoListResponse) => void
+}
+
+function AddItemComponent({ toDoListItems, setToDoListItems }: Props) {
     const [itemValue, setItemValue] = useState('');
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (itemValue !== '') {
             addAnItem(itemValue);
+            const newList = [...toDoListItems, itemValue];
+            setToDoListItems(newList);
         }
     }
 

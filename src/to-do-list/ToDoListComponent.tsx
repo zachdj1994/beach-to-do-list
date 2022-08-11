@@ -1,15 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import AddItemComponent from './AddItemComponent';
+import {getToDoListItems} from './ToDoListService';
 
-function ToDoListComponent({ toDoItems }: {toDoItems: string[]}) {
+function ToDoListComponent() {
+    const [toDoListItems, setToDoListItems] = useState(['']);
+    useEffect(() => {
+        getToDoListItems().then((result: GetToDoListResponse) => {
+            setToDoListItems(result);
+        });
+    }, []);
+
     const [showAddItemButton, setShowAddItemButton] = useState(false)
     return(
         <ul className={'To-do-list'}>
-            {toDoItems.map((toDoItem, index) => (<li key={index} className={'To-do-list-item'}>{toDoItem}</li>))}
+            {toDoListItems.map((toDoItem, index) => (<li key={index} className={'To-do-list-item'}>{toDoItem}</li>))}
             {showAddItemButton &&
                 <li className={'To-do-list-item'}>
-                    <AddItemComponent />
+                    <AddItemComponent toDoListItems={toDoListItems} setToDoListItems={setToDoListItems}/>
                 </li>
             }
             <li className={'To-do-list-item'}>
