@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import AddItemComponent from './AddItemComponent';
 import {getToDoListItems} from './ToDoListService';
+import AddItemComponent from './AddItemComponent';
+import DeleteItemComponent from './DeleteItemComponent';
 
 function ToDoListComponent() {
     const [toDoListItems, setToDoListItems] = useState(['']);
@@ -14,7 +15,12 @@ function ToDoListComponent() {
     const [showAddItemButton, setShowAddItemButton] = useState(false)
     return(
         <ul className={'To-do-list'}>
-            {toDoListItems.map((toDoItem, index) => (<li key={index} className={'To-do-list-item'}>{toDoItem}</li>))}
+            {toDoListItems.map((toDoItem, index) => (
+                <li key={index} className={'To-do-list-item'}>
+                    {toDoItem}
+                    <DeleteItemComponent />
+                </li>
+            ))}
             {showAddItemButton &&
                 <li className={'To-do-list-item'}>
                     <AddItemComponent toDoListItems={toDoListItems} setToDoListItems={setToDoListItems}/>
