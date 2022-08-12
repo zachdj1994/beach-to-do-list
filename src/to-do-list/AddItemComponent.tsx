@@ -1,9 +1,9 @@
 import {addAnItem} from './ToDoListService';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 type Props = {
-    toDoListItems: GetToDoListResponse
-    setToDoListItems: (result: GetToDoListResponse) => void
+    toDoListItems: ToDoList
+    setToDoListItems: (result: ToDoList) => void
 }
 
 function AddItemComponent({ toDoListItems, setToDoListItems }: Props) {
@@ -11,11 +11,11 @@ function AddItemComponent({ toDoListItems, setToDoListItems }: Props) {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (itemValue !== '') {
-            addAnItem(itemValue);
-            const newList = [...toDoListItems, itemValue];
-            setToDoListItems(newList);
-        }
+        if (itemValue !== '')
+            addAnItem(itemValue).then((result: ToDoListItem) => {
+                    const newList: ToDoList = [...toDoListItems, result];
+                    setToDoListItems(newList);
+            });
     }
 
     const handleChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -27,7 +27,7 @@ function AddItemComponent({ toDoListItems, setToDoListItems }: Props) {
             <input type="text" data-testid={'text-field'} onChange={handleChange} />
             <input type="submit" value="Submit" />
         </form>
-    )
+    );
 }
 
 export default AddItemComponent;

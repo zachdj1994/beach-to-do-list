@@ -1,6 +1,10 @@
 import React from 'react';
 
-function DeleteItemComponent() {
+type Props = {
+    toDoItemKey: number
+}
+
+function DeleteItemComponent({ toDoItemKey }: Props) {
     return(
         <div></div>
     );
