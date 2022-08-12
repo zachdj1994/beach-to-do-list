@@ -15,6 +15,8 @@ const addAnItem = async (item: string): Promise<ToDoListItem> => {
     return {key: data.itemId, text: data.item};
 }
 
-const deleteAnItem = (toDoItemKey: number) => console.log('delete', toDoItemKey);
+const deleteAnItem = (toDoItemKey: number) => {
+    axios.delete(`${url}?id=${toDoItemKey}`, {baseURL: 'http://localhost:8080'})
+};
 
 export {getToDoListItems, addAnItem, deleteAnItem};

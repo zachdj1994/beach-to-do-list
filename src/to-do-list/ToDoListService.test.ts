@@ -1,9 +1,10 @@
 import axios from 'axios';
-import {addAnItem, getToDoListItems} from './ToDoListService';
+import {addAnItem, deleteAnItem, getToDoListItems} from './ToDoListService';
 
 jest.mock('axios', () => ({
     get: jest.fn(),
-    post: jest.fn()
+    post: jest.fn(),
+    delete: jest.fn()
 }));
 
 describe('The to do list service', () => {
@@ -43,4 +44,14 @@ describe('The to do list service', () => {
             expect(mockPost).toHaveBeenCalledWith('/toDoListItems', {item: 'Vibe'}, {baseURL: 'http://localhost:8080'});
         });
     });
+
+    describe('deleteAnItem', () => {
+        it('makes a delete request to the API', () => {
+            const mockDelete = jest.spyOn(axios, 'delete');
+
+            deleteAnItem(1);
+
+            expect(mockDelete).toHaveBeenCalledWith('/toDoListItems?id=1', {baseURL: 'http://localhost:8080'})
+        });
+    })
 });
