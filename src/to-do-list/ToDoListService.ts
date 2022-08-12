@@ -15,4 +15,6 @@ const addAnItem = async (item: string): Promise<ToDoListItem> => {
     return {key: data.itemId, text: data.item};
 }
 
-export {getToDoListItems, addAnItem};
+const deleteAnItem = (toDoItemKey: number) => console.log('delete', toDoItemKey);
+
+export {getToDoListItems, addAnItem, deleteAnItem};
