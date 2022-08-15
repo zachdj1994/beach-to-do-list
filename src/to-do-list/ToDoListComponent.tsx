@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
-import AddItemComponent from './AddItemComponent';
 import {getToDoListItems} from './ToDoListService';
+import AddItemComponent from './AddItemComponent';
+import DeleteItemComponent from './DeleteItemComponent';
 
 function ToDoListComponent() {
-    const [toDoListItems, setToDoListItems] = useState(['']);
+    const [toDoListItems, setToDoListItems] = useState<ToDoList>();
     useEffect(() => {
-        getToDoListItems().then((result: GetToDoListResponse) => {
+        getToDoListItems().then((result: ToDoList) => {
             setToDoListItems(result);
         });
     }, []);
@@ -14,21 +14,23 @@ function ToDoListComponent() {
     const [showAddItemButton, setShowAddItemButton] = useState(false)
     return(
         <ul className={'To-do-list'}>
-            {toDoListItems.map((toDoItem, index) => (<li key={index} className={'To-do-list-item'}>{toDoItem}</li>))}
-            {showAddItemButton &&
-                <li className={'To-do-list-item'}>
+            {toDoListItems &&
+                toDoListItems.map((toDoItem: ToDoListItem) => (
+                        <li key={toDoItem.key} className={'To-do-list-item'}>
+                            {toDoItem.text}
+                            <DeleteItemComponent toDoItemKey={toDoItem.key} toDoListItems={toDoListItems} setToDoListItems={setToDoListItems} />
+                        </li>
+                ))}
+            {showAddItemButton && toDoListItems &&
+                <li key={-1} className={'To-do-list-item'}>
                     <AddItemComponent toDoListItems={toDoListItems} setToDoListItems={setToDoListItems}/>
                 </li>
             }
-            <li className={'To-do-list-item'}>
+            <li key={-2} className={'To-do-list-item'}>
                 <button onClick={() => setShowAddItemButton(true)}>Add Item +</button>
             </li>
         </ul>
     );
-}
-
-ToDoListComponent.propTypes = {
-    toDoItems: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default ToDoListComponent;
