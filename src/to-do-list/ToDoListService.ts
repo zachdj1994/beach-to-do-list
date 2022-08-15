@@ -12,7 +12,7 @@ const getToDoListItems = async (): Promise<ToDoList> => {
 const addAnItem = async (item: string): Promise<ToDoListItem> => {
     const { data } = await axios.post<GetToDoListResponseItem>(url, {item}, {baseURL: 'http://localhost:8080'});
 
-    return {key: data.itemId, text: data.item};
+    return {key: data.itemId, text: item};
 }
 
 const deleteAnItem = (toDoItemKey: number) => {

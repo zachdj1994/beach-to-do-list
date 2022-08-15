@@ -8,7 +8,7 @@ describe('The delete item component', () => {
             const toDoItemKey = 10;
             const mockDeleteAnItem = jest.spyOn(ToDoListService,'deleteAnItem')
 
-            render(<DeleteItemComponent toDoItemKey={toDoItemKey} /> );
+            render(<DeleteItemComponent toDoItemKey={toDoItemKey} setToDoListItems={jest.fn()} toDoListItems={[{key: toDoItemKey, text: 'text'}]} /> );
                 fireEvent.click(screen.getByText('Delete'));
 
             expect(mockDeleteAnItem).toHaveBeenCalledWith(toDoItemKey);

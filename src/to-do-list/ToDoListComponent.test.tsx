@@ -51,11 +51,11 @@ describe('The to do list component', () => {
         await act(async() => {render(<ToDoListComponent />);});
 
         expect(DeleteItemComponent).toHaveBeenCalledTimes(5);
-        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 10}, {})
-        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 11}, {})
-        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 12}, {})
-        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 13}, {})
-        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 15}, {})
+        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 10,  setToDoListItems: expect.any(Function), toDoListItems: expect.any(Array)}, {})
+        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 11,  setToDoListItems: expect.any(Function), toDoListItems: expect.any(Array)}, {})
+        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 12,  setToDoListItems: expect.any(Function), toDoListItems: expect.any(Array)}, {})
+        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 13,  setToDoListItems: expect.any(Function), toDoListItems: expect.any(Array)}, {})
+        expect(DeleteItemComponent).toHaveBeenCalledWith({toDoItemKey: 15,  setToDoListItems: expect.any(Function), toDoListItems: expect.any(Array)}, {})
     });
 
     describe('the add item button', () => {

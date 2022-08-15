@@ -18,7 +18,7 @@ function ToDoListComponent() {
                 toDoListItems.map((toDoItem: ToDoListItem) => (
                         <li key={toDoItem.key} className={'To-do-list-item'}>
                             {toDoItem.text}
-                            <DeleteItemComponent toDoItemKey={toDoItem.key}/>
+                            <DeleteItemComponent toDoItemKey={toDoItem.key} toDoListItems={toDoListItems} setToDoListItems={setToDoListItems} />
                         </li>
                 ))}
             {showAddItemButton && toDoListItems &&
